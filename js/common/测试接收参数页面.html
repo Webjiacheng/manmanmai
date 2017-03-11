@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function getQueryString(key) {
+        var search=location.search.slice(1);//name=hjc&age=18
+        var searchArr=search.split('&');//["name=hjc", "age=18"]
+        var searchObj={};
+        var tempArr=null;
+        for(var i=0,len=searchArr.length;i<len;i++){
+            tempArr=searchArr[i].split("=");//1-["name", "hjc"];2-["age", "18"]
+            searchObj[tempArr[0]]=tempArr[1];
+        }
+        //console.log(searchObj);//Object {name: "hjc", age: "18"}
+        //判断是否传参
+        return arguments.length==0?searchObj:searchObj[key];
+    }
+    console.log(getQueryString());
+    console.log(getQueryString('name'));
+    console.log(getQueryString('age'));
+</script>
+</body>
+</html>
